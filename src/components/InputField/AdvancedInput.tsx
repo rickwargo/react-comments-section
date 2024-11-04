@@ -14,12 +14,11 @@ interface AdvancedInputProps {
   cancelBtnStyle?: object
   submitBtnStyle?: object
   comId?: string
-  messagePlaceholder?: string
-  replyPlaceholder?: string
   imgStyle?: object
   imgDiv?: object
   customImg?: string
   text: string
+  placeHolder?: string
 }
 
 const AdvancedInput = ({
@@ -29,12 +28,11 @@ const AdvancedInput = ({
   cancelBtnStyle,
   mode,
   comId,
-  messagePlaceholder = 'Type your message here',
-  replyPlaceholder = 'Type your reply here',
   imgDiv,
   imgStyle,
   customImg,
-  text
+  text,
+  placeHolder
 }: AdvancedInputProps) => {
   const [html, setHtml] = useState('<p></p>')
   const globalStore: any = useContext(GlobalContext)
@@ -100,9 +98,7 @@ const AdvancedInput = ({
           <div className='advanced-border'>
             <Editor
               editorState={editorState}
-              placeholder={mode === 'replyMode' || mode === 'editMode'
-                  ? globalStore.replyPlaceholder || replyPlaceholder
-                  : globalStore.messagePlaceholder || messagePlaceholder}
+              placeholder={placeHolder ? placeHolder : 'Type your reply here.'}
               onEditorStateChange={(editorState) =>
                 onEditorStateChange(editorState)
               }

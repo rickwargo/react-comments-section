@@ -7,10 +7,7 @@ const App = () => {
       <div className='head-title'>Demo Examples</div>
       <hr style={{ borderTop: '1px solid', width: '100%' }} />
       <div className='example-row'>
-        <DefaultComponent removeEmoji={true} />
-      </div>
-      <div className='example-row'>
-        <DefaultComponent removeEmoji={false} />
+        <DefaultComponent />
       </div>
     </div>
   )

@@ -9,8 +9,6 @@ export const GlobalProvider = ({
   currentUser,
   replyTop,
   customImg,
-  messagePlaceholder,
-  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -26,7 +24,8 @@ export const GlobalProvider = ({
   bypassDeleteWarning,
   replyInputStyle,
   removeEmoji,
-  advancedInput
+  advancedInput,
+  placeHolder
 }: {
   children: any
   currentUser?: {
@@ -37,8 +36,6 @@ export const GlobalProvider = ({
   } | null
   replyTop?: boolean
   customImg?: string
-  messagePlaceholder?: string
-  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -53,7 +50,7 @@ export const GlobalProvider = ({
     fullName: string
     avatarUrl: string
     text: string
-    timestamp?: Date
+    timestamp?: string
     userProfile?: string
     replies?:
       | Array<{
@@ -62,7 +59,7 @@ export const GlobalProvider = ({
           fullName: string
           avatarUrl: string
           text: string
-          timestamp?: Date
+          timestamp?: string
           userProfile?: string
         }>
       | undefined
@@ -74,6 +71,7 @@ export const GlobalProvider = ({
   currentData?: Function
   bypassDeleteWarning?: boolean
   advancedInput?: boolean
+  placeHolder?: string
 }) => {
   const [currentUserData] = useState(currentUser)
   const [data, setData] = useState<
@@ -83,8 +81,8 @@ export const GlobalProvider = ({
       fullName: string
       avatarUrl: string
       text: string
-      timestamp?: Date
       userProfile?: string
+      timestamp?: string
       replies?:
         | Array<{
             userId: string
@@ -92,7 +90,7 @@ export const GlobalProvider = ({
             fullName: string
             avatarUrl: string
             text: string
-            timestamp?: Date
+            timestamp?: string
             userProfile?: string
           }>
         | undefined
@@ -148,7 +146,7 @@ export const GlobalProvider = ({
         : undefined,
       fullName: currentUserData!.currentUserFullName,
       text: text,
-      timestamp: new Date(),
+      timestamp: `${new Date().toISOString()}`,
       replies: []
     })
     setData(copyData)
@@ -190,7 +188,7 @@ export const GlobalProvider = ({
           : undefined,
         fullName: currentUserData!.currentUserFullName,
         text: text,
-        timestamp: new Date()
+        timestamp: `${new Date().toISOString()}`
       })
       setData(copyData)
       handleAction(comId, false)
@@ -207,7 +205,7 @@ export const GlobalProvider = ({
           : undefined,
         fullName: currentUserData!.currentUserFullName,
         text: text,
-        timestamp: new Date()
+        timestamp: `${new Date().toISOString()}`
       })
       setData(copyData)
       handleAction(comId, false)
@@ -245,8 +243,6 @@ export const GlobalProvider = ({
         onDelete: onDelete,
         bypassDeleteWarning: bypassDeleteWarning,
         customImg: customImg,
-        messagePlaceholder: messagePlaceholder,
-        replyPlaceholder: replyPlaceholder,
         inputStyle: inputStyle,
         formStyle: formStyle,
         submitBtnStyle: submitBtnStyle,
@@ -259,7 +255,8 @@ export const GlobalProvider = ({
         onEditAction: onEditAction,
         replyInputStyle: replyInputStyle,
         removeEmoji: removeEmoji,
-        advancedInput: advancedInput
+        advancedInput: advancedInput,
+        placeHolder: placeHolder
       }}
     >
       {children}

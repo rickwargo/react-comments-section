@@ -2,8 +2,7 @@ import React from 'react'
 import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
-// @ts-ignore
-const DefaultComponent = ({removeEmoji}) => {
+const DefaultComponent = () => {
   const data = [
     {
       userId: '01a',
@@ -11,7 +10,8 @@ const DefaultComponent = ({removeEmoji}) => {
       fullName: 'Riya Negi',
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-      text: 'Hey, Loved your blog!',
+      text: 'Hey, Loved your blog! ',
+      timestamp: '2024-09-28T10:34:56Z',
       replies: [
         {
           userId: '02a',
@@ -19,7 +19,8 @@ const DefaultComponent = ({removeEmoji}) => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Adam Scott',
           avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
-          text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
+          text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰',
+          timestamp: '2024-09-28T12:34:56Z'
         },
         {
           userId: '01a',
@@ -27,7 +28,8 @@ const DefaultComponent = ({removeEmoji}) => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Riya Negi',
           avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
-          text: 'thanks!😊'
+          text: 'thanks!😊',
+          timestamp: '2024-09-28T12:34:56Z'
         }
       ]
     },
@@ -38,6 +40,7 @@ const DefaultComponent = ({removeEmoji}) => {
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'I have a doubt about the 4th point🤔',
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
+      timestamp: '2024-09-28T12:34:56Z',
       replies: []
     }
   ]
@@ -52,7 +55,6 @@ const DefaultComponent = ({removeEmoji}) => {
         <span className='title'>Default Component</span>
       </a>
       <CommentSection
-        removeEmoji={removeEmoji}
         currentUser={{
           currentUserId: '01a',
           currentUserImg:
@@ -63,9 +65,11 @@ const DefaultComponent = ({removeEmoji}) => {
         }}
         commentData={data}
         logIn={{
-          loginLink: 'http://localhost:3001/',
-          signupLink: 'http://localhost:3001/'
+          onLogin: () => alert('Call login function '),
+          signUpLink: 'http://localhost:3001/'
         }}
+        placeHolder='Write your comment...'
+        removeEmoji={true}
         onSubmitAction={(data: {
           userId: string
           comId: string
@@ -73,15 +77,12 @@ const DefaultComponent = ({removeEmoji}) => {
           userProfile?: string
           fullName: string
           text: string
-          timestamp?: Date
           replies: any
           commentId: string
         }) => console.log('check submit, ', data)}
         currentData={(data: any) => {
-          console.log('[current data]', data)
+          console.log('current data', data)
         }}
-        messagePlaceholder='Type a message'
-        replyPlaceholder='Leave a reply here'
       />
     </div>
   )

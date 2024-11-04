@@ -15,14 +15,13 @@ interface CommentSectionProps {
     currentUserFullName: string
   } | null
   logIn: {
-    loginLink: string
-    signupLink: string
-    messagePlaceholder?: string
+    loginLink?: string
+    signUpLink?: string
+    onLogin?: () => void
+    onSignUp?: () => void
   }
   replyTop?: boolean
   customImg?: string
-  messagePlaceholder?: string
-  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -42,14 +41,16 @@ interface CommentSectionProps {
   bypassDeleteWarning?: boolean
   removeEmoji?: boolean
   advancedInput?: boolean
+  placeHolder?: string
+  showTimestamp?: boolean
   commentData: Array<{
     userId: string
     comId: string
     fullName: string
     avatarUrl: string
     text: string
-    timestamp?: Date
     userProfile?: string
+    timestamp?: string
     replies?:
       | Array<{
           userId: string
@@ -57,7 +58,7 @@ interface CommentSectionProps {
           fullName: string
           avatarUrl: string
           text: string
-          timestamp?: Date
+          timestamp?: string
           userProfile?: string
         }>
       | undefined
@@ -67,8 +68,6 @@ interface CommentSectionProps {
 export const CommentSection = ({
   currentUser,
   customImg,
-  messagePlaceholder,
-  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -80,6 +79,8 @@ export const CommentSection = ({
   replyTop,
   commentsCount,
   commentData,
+  placeHolder,
+  showTimestamp,
   hrStyle,
   titleStyle,
   removeEmoji,
@@ -96,8 +97,6 @@ export const CommentSection = ({
     <GlobalProvider
       currentUser={currentUser}
       replyTop={replyTop}
-      messagePlaceholder={messagePlaceholder}
-      replyPlaceholder={replyPlaceholder}
       customImg={customImg}
       inputStyle={inputStyle}
       formStyle={formStyle}
@@ -115,6 +114,7 @@ export const CommentSection = ({
       bypassDeleteWarning={bypassDeleteWarning}
       removeEmoji={removeEmoji}
       advancedInput={advancedInput}
+      placeHolder={placeHolder}
     >
       <CommentSectionComponent
         overlayStyle={overlayStyle}
@@ -122,6 +122,7 @@ export const CommentSection = ({
         logIn={logIn}
         titleStyle={titleStyle}
         customNoComment={customNoComment}
+        showTimestamp={showTimestamp}
       />
     </GlobalProvider>
   )

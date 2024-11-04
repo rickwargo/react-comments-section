@@ -4,6 +4,8 @@ import 'react-comments-section/dist/index.css'
 import { useState } from 'react'
 
 const AdvancedComponent = () => {
+  let date = new Date()
+
   const [data] = useState([
     {
       userId: '01a',
@@ -12,6 +14,9 @@ const AdvancedComponent = () => {
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: `<p>Hey <strong>loved</strong> your blog! Can you show me some other ways to <del><em>fix</em></del>  solve this?🤔<br>Here's my <a href="https://www.linkedin.com/in/riya-negi-8879631a9/" target="_blank">Linkedin Profile</a> to reach out.</p>`,
+      timestamp: `${new Date(
+        date.getTime() - 5 * 60 * 60 * 1000
+      ).toISOString()}`,
       replies: [
         {
           userId: '02a',
@@ -23,7 +28,10 @@ const AdvancedComponent = () => {
           <pre>event.preventDefault()</pre>
           <p>Best of luck with your project! <br></p>
           <img src="https://c.tenor.com/4cR1jMpsrEgAAAAC/snoopy-cheerleader.gif" alt="undefined" style="height: auto;width: auto"/>
-          <p></p>`
+          <p></p>`,
+          timestamp: `${new Date(
+            date.getTime() - 30 * 60 * 1000
+          ).toISOString()}`
         },
         {
           userId: '01a',
@@ -31,7 +39,8 @@ const AdvancedComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Riya Negi',
           avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
-          text: '<p><strong>OMG!</strong> it worked! <span style="color: rgb(209,72,65);">DO NOT stop this blog series!!!!</span> 💃</p>'
+          text: '<p><strong>OMG!</strong> it worked! <span style="color: rgb(209,72,65);">DO NOT stop this blog series!!!!</span> 💃</p>',
+          timestamp: `${new Date()}`
         }
       ]
     },
@@ -48,6 +57,9 @@ const AdvancedComponent = () => {
       <li>Yoursef</li>
       </ol>`,
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
+      timestamp: `${new Date(
+        date.getTime() - 3 * 60 * 60 * 1000
+      ).toISOString()}`,
       replies: []
     }
   ])
@@ -77,8 +89,8 @@ const AdvancedComponent = () => {
           console.log('current data', data)
         }}
         logIn={{
-          loginLink: 'http://localhost:3001/',
-          signupLink: 'http://localhost:3001/'
+          onLogin: () => alert('Call login function '),
+          signUpLink: 'http://localhost:3001/'
         }}
         customImg='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F13%2F2015%2F04%2F05%2Ffeatured.jpg&q=60'
         inputStyle={{ border: '1px solid rgb(208 208 208)' }}

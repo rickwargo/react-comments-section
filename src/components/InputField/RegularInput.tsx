@@ -10,8 +10,6 @@ interface RegularInputProps {
   comId?: string
   mode?: string
   customImg?: string
-  messagePlaceholder?: string
-  replyPlaceholder?: string
   inputStyle?: object
   cancelBtnStyle?: object
   submitBtnStyle?: object
@@ -20,6 +18,7 @@ interface RegularInputProps {
   handleSubmit: Function
   text: string
   setText: Function
+  placeHolder?: string
 }
 
 const RegularInput = ({
@@ -28,17 +27,17 @@ const RegularInput = ({
   imgStyle,
   customImg,
   mode,
-  messagePlaceholder,
-  replyPlaceholder,
   inputStyle,
   cancelBtnStyle,
   comId,
   submitBtnStyle,
   handleSubmit,
   text,
-  setText
+  setText,
+  placeHolder
 }: RegularInputProps) => {
   const globalStore: any = useContext(GlobalContext)
+
   return (
     <form
       className='form'
@@ -72,7 +71,7 @@ const RegularInput = ({
               ? globalStore.replyInputStyle
               : globalStore.inputStyle || inputStyle
           }
-            placeholder={mode === 'replyMode' || mode === 'editMode' ? globalStore.replyPlaceholder || replyPlaceholder : globalStore.messagePlaceholder || messagePlaceholder}
+          placeholder={placeHolder ? placeHolder : 'Type your reply here.'}
         >
           <Mention
             trigger="@"
@@ -101,8 +100,7 @@ const RegularInput = ({
           setText={setText}
           mode={mode}
           inputStyle={inputStyle}
-          messagePlaceholder={messagePlaceholder}
-          replyPlaceholder={replyPlaceholder}
+          placeHolder={placeHolder}
         />
       )}
 
@@ -123,7 +121,7 @@ const RegularInput = ({
       <button
         className='postBtn'
         type='submit'
-        disabled={text == ''}
+        disabled={text != '' ? false : true}
         style={globalStore.submitBtnStyle || submitBtnStyle}
         onClick={(e) => (text ? handleSubmit(e) : null)}
       >

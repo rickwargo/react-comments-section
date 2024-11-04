@@ -54,10 +54,10 @@ const LogInComponent = () => {
         currentUser={null}
         commentData={data}
         logIn={{
-          loginLink: 'http://localhost:3001/',
-          signupLink: 'http://localhost:3001/',
-          messagePlaceholder: 'Please log in or sign up to leave a comment.'
+          onLogin: () => alert('Call login function '),
+          signUpLink: 'http://localhost:3001/'
         }}
+        showTimestamp={false}
       />
     </div>
   )

@@ -13,13 +13,12 @@ interface InputFieldProps {
   parentId?: string
   mode?: string
   customImg?: string
-  messagePlaceholder?: string
-  replyPlaceholder?: string
   inputStyle?: object
   cancelBtnStyle?: object
   submitBtnStyle?: object
   imgStyle?: object
   imgDiv?: object
+  placeHolder?: string
 }
 
 const InputField = ({
@@ -29,13 +28,12 @@ const InputField = ({
   parentId,
   mode,
   customImg,
-  messagePlaceholder = 'Type your message here',
-  replyPlaceholder = 'Type your reply here',
   inputStyle,
   cancelBtnStyle,
   submitBtnStyle,
   imgStyle,
-  imgDiv
+  imgDiv,
+  placeHolder
 }: InputFieldProps) => {
   const [text, setText] = useState('')
 
@@ -128,14 +126,13 @@ const InputField = ({
           text={mode === 'editMode' ? text : ''}
           formStyle={formStyle}
           mode={mode}
-          messagePlaceholder={messagePlaceholder}
-          replyPlaceholder={replyPlaceholder}
           cancelBtnStyle={cancelBtnStyle}
           submitBtnStyle={submitBtnStyle}
           comId={comId}
           imgDiv={imgDiv}
           imgStyle={imgStyle}
           customImg={customImg}
+          placeHolder={placeHolder}
         />
       ) : (
         <RegularInput
@@ -144,8 +141,6 @@ const InputField = ({
           imgStyle={imgStyle}
           customImg={customImg}
           mode={mode}
-          messagePlaceholder={messagePlaceholder}
-          replyPlaceholder={replyPlaceholder}
           inputStyle={inputStyle}
           cancelBtnStyle={cancelBtnStyle}
           comId={comId}
@@ -153,6 +148,7 @@ const InputField = ({
           handleSubmit={handleSubmit}
           text={text}
           setText={setText}
+          placeHolder={placeHolder}
         />
       )}
     </div>
