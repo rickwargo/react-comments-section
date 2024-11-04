@@ -76,16 +76,8 @@ const CommentSection = ({
               <div key={i.comId}>
                 <CommentStructure
                   info={i}
-                  editMode={
-                    _.indexOf(globalStore.editArr, i.comId) === -1
-                      ? false
-                      : true
-                  }
-                  replyMode={
-                    _.indexOf(globalStore.replyArr, i.comId) === -1
-                      ? false
-                      : true
-                  }
+                  editMode={_.indexOf(globalStore.editArr, i.comId) !== -1}
+                  replyMode={_.indexOf(globalStore.replyArr, i.comId) !== -1}
                   logIn={logIn}
                 />
                 {i.replies &&
@@ -96,16 +88,8 @@ const CommentSection = ({
                         <CommentStructure
                           info={j}
                           parentId={i.comId}
-                          editMode={
-                            _.indexOf(globalStore.editArr, j.comId) === -1
-                              ? false
-                              : true
-                          }
-                          replyMode={
-                            _.indexOf(globalStore.replyArr, j.comId) === -1
-                              ? false
-                              : true
-                          }
+                          editMode={_.indexOf(globalStore.editArr, j.comId) !== -1}
+                          replyMode={_.indexOf(globalStore.replyArr, j.comId) !== -1}
                           logIn={logIn}
                         />
                       </div>

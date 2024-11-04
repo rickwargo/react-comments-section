@@ -3,6 +3,7 @@ import './InputField.scss'
 import { useContext } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import EmojiInput from './EmojiInput'
+import { MentionsInput, Mention } from 'react-mentions'
 
 interface RegularInputProps {
   formStyle?: object
@@ -38,7 +39,6 @@ const RegularInput = ({
   setText
 }: RegularInputProps) => {
   const globalStore: any = useContext(GlobalContext)
-
   return (
     <form
       className='form'
@@ -63,18 +63,38 @@ const RegularInput = ({
         </a>
       </div>
       {globalStore.removeEmoji ? (
-        <input
+        <MentionsInput
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           className='postComment'
           style={
             mode === 'replyMode' || mode === 'editMode'
               ? globalStore.replyInputStyle
               : globalStore.inputStyle || inputStyle
           }
-          type='text'
-          placeholder={mode === 'replyMode' || mode === 'editMode' ? globalStore.replyPlaceholder || replyPlaceholder : globalStore.messagePlaceholder || messagePlaceholder}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
+            placeholder={mode === 'replyMode' || mode === 'editMode' ? globalStore.replyPlaceholder || replyPlaceholder : globalStore.messagePlaceholder || messagePlaceholder}
+        >
+          <Mention
+            trigger="@"
+            data={[
+              {id: 111, display: "Joe Wilson"},
+              {id: 222, display: "Billie Ellish"},
+              {id: 333, display: "Prince"},
+              {id: 444, display: "Paul Burns"},
+            ]}
+          />
+          <Mention
+            trigger="#"
+            data={[
+              {id: "todo", display: "todo"},
+              {id: "follow-up", display: "FollowUp"},
+              {id: "solar", display: "Solar"},
+              {id: "bess", display: "BESS"},
+              {id: "evse", display: "EVSE"},
+              {id: "gbe", display: "GBE"},
+            ]}
+          />
+        </MentionsInput>
       ) : (
         <EmojiInput
           text={text}
@@ -103,7 +123,7 @@ const RegularInput = ({
       <button
         className='postBtn'
         type='submit'
-        disabled={text != '' ? false : true}
+        disabled={text == ''}
         style={globalStore.submitBtnStyle || submitBtnStyle}
         onClick={(e) => (text ? handleSubmit(e) : null)}
       >

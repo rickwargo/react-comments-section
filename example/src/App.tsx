@@ -1,9 +1,5 @@
 import React from 'react'
-import AdvancedComponent from './components/AdvancedComponent'
-import ClassComponent from './components/ClassComponent'
-import CustomComponent from './components/CustomComponent'
 import DefaultComponent from './components/DefaultComponent'
-import LogInComponent from './components/LogInComponent'
 
 const App = () => {
   return (
@@ -11,15 +7,10 @@ const App = () => {
       <div className='head-title'>Demo Examples</div>
       <hr style={{ borderTop: '1px solid', width: '100%' }} />
       <div className='example-row'>
-        <DefaultComponent />
-        <ClassComponent />
+        <DefaultComponent removeEmoji={true} />
       </div>
       <div className='example-row'>
-        <CustomComponent />
-        <LogInComponent />
-      </div>
-      <div className='example-row'>
-        <AdvancedComponent />
+        <DefaultComponent removeEmoji={false} />
       </div>
     </div>
   )

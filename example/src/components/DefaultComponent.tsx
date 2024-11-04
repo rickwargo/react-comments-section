@@ -2,7 +2,8 @@ import React from 'react'
 import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
-const DefaultComponent = () => {
+// @ts-ignore
+const DefaultComponent = ({removeEmoji}) => {
   const data = [
     {
       userId: '01a',
@@ -51,6 +52,7 @@ const DefaultComponent = () => {
         <span className='title'>Default Component</span>
       </a>
       <CommentSection
+        removeEmoji={removeEmoji}
         currentUser={{
           currentUserId: '01a',
           currentUserImg:
@@ -76,7 +78,7 @@ const DefaultComponent = () => {
           commentId: string
         }) => console.log('check submit, ', data)}
         currentData={(data: any) => {
-          console.log('current data', data)
+          console.log('[current data]', data)
         }}
         messagePlaceholder='Type a message'
         replyPlaceholder='Leave a reply here'

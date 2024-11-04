@@ -20,6 +20,7 @@
     "react": "file:../node_modules/react",
     "react-comments-section": "file:..",
     "react-dom": "file:../node_modules/react-dom",
+    "react-mentions": "^4.4.10",
     "react-scripts": "file:../node_modules/react-scripts"
   },
   "devDependencies": {
