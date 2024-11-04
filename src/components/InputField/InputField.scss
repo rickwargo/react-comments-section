@@ -131,3 +131,60 @@
   margin-left: 6px;
   width: 100%;
 }
+
+.mention {
+  .control {
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .multiLine {
+    .control {
+      font-family: monospace;
+      min-height: 63px;
+    }
+
+    .highlighter {
+      padding: 9px;
+      border: 1px solid transparent;
+    }
+
+    input {
+      padding: 9px;
+      border: 1px solid silver;
+    }
+  }
+
+  .singleLine {
+    display: inline-block;
+    width: 180px;
+
+    .highlighter {
+      padding: 1px;
+      border: 2px inset transparent;
+    }
+
+    input {
+      padding: 1px;
+      border: 2px inset;
+    }
+  }
+
+  .suggestions {
+    .list {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      font-size: 14px;
+    }
+
+    .item {
+      padding: 5px 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+      .focused {
+        background-color: #cee4e5;
+      }
+    }
+  }
+}

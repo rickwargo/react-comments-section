@@ -20,6 +20,8 @@ interface CommentSectionProps {
   titleStyle?: object
   customNoComment?: Function
   showTimestamp?: boolean
+  mentions?: any[]
+  tags?: any[]
 }
 
 const CommentSection = ({
@@ -28,7 +30,9 @@ const CommentSection = ({
   hrStyle,
   titleStyle,
   customNoComment,
-  showTimestamp = true
+  showTimestamp = true,
+  mentions,
+  tags
 }: CommentSectionProps) => {
   const handleLogin = () => {
     if (typeof logIn.onLogin === 'function') {
@@ -74,6 +78,8 @@ const CommentSection = ({
           placeHolder={globalStore.placeHolder}
           formStyle={{ margin: '10px 0px' }}
           imgDiv={{ margin: 0 }}
+          mentions={mentions}
+          tags={tags}
         />
       )}
 

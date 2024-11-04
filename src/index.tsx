@@ -43,6 +43,8 @@ interface CommentSectionProps {
   advancedInput?: boolean
   placeHolder?: string
   showTimestamp?: boolean
+  mentions?: any[]
+  tags?: any[]
   commentData: Array<{
     userId: string
     comId: string
@@ -81,6 +83,8 @@ export const CommentSection = ({
   commentData,
   placeHolder,
   showTimestamp,
+  mentions,
+  tags,
   hrStyle,
   titleStyle,
   removeEmoji,
@@ -123,6 +127,8 @@ export const CommentSection = ({
         titleStyle={titleStyle}
         customNoComment={customNoComment}
         showTimestamp={showTimestamp}
+        mentions={mentions}
+        tags={tags}
       />
     </GlobalProvider>
   )

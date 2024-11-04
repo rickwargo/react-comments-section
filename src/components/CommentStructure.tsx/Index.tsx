@@ -22,6 +22,8 @@ interface CommentStructureProps {
   parentId?: string
   replyMode: boolean
   showTimestamp?: boolean
+  mentions?: any[]
+  tags?: string[]
   logIn: {
     loginLink?: string | (() => void)
     signUpLink?: string | (() => void)
@@ -35,7 +37,9 @@ const CommentStructure = ({
   editMode,
   parentId,
   replyMode,
-  showTimestamp
+  showTimestamp,
+  mentions,
+  tags
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
@@ -154,7 +158,7 @@ const CommentStructure = ({
               }}
             />
           ) : (
-            <div className='infoStyle'>{info.text}</div>
+            <div className='infoStyle'>{info.text.replaceAll(/@\[([^\]]+)]\([^)]+\)/g, '$1')}</div>
           )}
           <div style={{ marginLeft: 32 }}>
             {' '}
@@ -191,6 +195,8 @@ const CommentStructure = ({
             fillerText={''}
             mode={'replyMode'}
             parentId={parentId}
+            mentions={mentions}
+            tags={tags}
           />
         </div>
       )
@@ -206,6 +212,8 @@ const CommentStructure = ({
           fillerText={info.text}
           mode={'editMode'}
           parentId={parentId}
+          mentions={mentions}
+          tags={tags}
         />
       )
     }
