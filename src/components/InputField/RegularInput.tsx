@@ -85,12 +85,12 @@ const RegularInput = ({
           <Mention
             trigger="#"
             data={[
-              {id: "todo", display: "todo"},
-              {id: "follow-up", display: "FollowUp"},
-              {id: "solar", display: "Solar"},
-              {id: "bess", display: "BESS"},
-              {id: "evse", display: "EVSE"},
-              {id: "gbe", display: "GBE"},
+              {id: "todo", display: "#todo"},
+              {id: "follow-up", display: "#follow-up"},
+              {id: "solar", display: "#solar"},
+              {id: "bess", display: "#bess"},
+              {id: "evse", display: "#evse"},
+              {id: "gbe", display: "#gbe"},
             ]}
           />
         </MentionsInput>
