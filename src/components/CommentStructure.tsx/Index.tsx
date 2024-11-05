@@ -157,9 +157,16 @@ const CommentStructure = ({
                 __html: info.text
               }}
             />
-          ) : (
-            <div className='infoStyle'>{info.text.replaceAll(/@\[([^\]]+)]\([^)]+\)/g, '$1')}</div>
-          )}
+          ) : info.text.substring(0, 19) === "<span data-link-id=" ? (
+              <div
+                className='infoStyle'
+                dangerouslySetInnerHTML={{
+                  __html: info.text
+                }}
+              />
+            ) : (
+              <div className='infoStyle'>{info.text.replaceAll(/@\[([^\]]+)]\([^)]+\)/g, '$1')}</div>
+            )}
           <div style={{ marginLeft: 32 }}>
             {' '}
             {currentUser && (
