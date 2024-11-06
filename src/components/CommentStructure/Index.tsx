@@ -1,11 +1,11 @@
 import './CommentStructure.scss'
 import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider.tsx'
+import { GlobalContext } from '../../context/Provider'
 import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
-import DeleteModal from './DeleteModal.tsx'
+import DeleteModal from './DeleteModal'
 import React from 'react'
-import InputField from "../InputField/Index.tsx";
+import InputField from "../InputField/Index";
 
 interface CommentStructureProps {
   info: {

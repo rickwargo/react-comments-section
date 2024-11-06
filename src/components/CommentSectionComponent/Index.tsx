@@ -1,4 +1,4 @@
-import CommentStructure from '../CommentStructure.tsx/Index'
+import CommentStructure from '../CommentStructure/Index'
 import InputField from '../InputField/Index'
 import './CommentSection.css'
 import { useContext } from 'react'
