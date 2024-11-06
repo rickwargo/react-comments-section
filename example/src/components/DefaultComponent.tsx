@@ -79,11 +79,9 @@ const DefaultComponent = () => {
           text: string
           replies: any
           commentId: string
-        }) => {
-          // }) => console.log('check submit, ', data)}
-        }}
+        }) => console.log('check submit, ', data)}
         currentData={(data: any) => {
-          // console.log('current data', data)
+          console.log('current data', data)
         }}
         mentions={[
           {id: 1, display: "Hooters"},

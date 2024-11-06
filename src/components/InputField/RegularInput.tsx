@@ -90,11 +90,11 @@ const RegularInput = ({
           />
         </a>
       </div>
-      {mentions || tags ? (
+      {true || mentions || tags ? (
           <MentionsInput
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className='mentions'
+            className='postComment'
             style={
               mode === 'replyMode' || mode === 'editMode'
                 ? globalStore.replyInputStyle
@@ -111,7 +111,7 @@ const RegularInput = ({
 
         ) : globalStore.removeEmoji ? (
         <input
-          className='mentions'
+          className='postComment'
           style={
             mode === 'replyMode' || mode === 'editMode'
               ? globalStore.replyInputStyle
