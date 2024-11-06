@@ -70,7 +70,7 @@ const CustomComponent = () => {
         commentsCount={8}
         commentData={data}
         currentData={(data: any) => {
-          console.log('current data', data)
+          // console.log('current data', data)
         }}
         logIn={{
           onLogin: () => alert('Call login function '),
