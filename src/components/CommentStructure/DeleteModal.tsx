@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import 'react-responsive-modal/styles.css'
 import { Modal } from 'react-responsive-modal'
-import { GlobalContext } from '../../context/Provider'
+import { GlobalContext } from '../../context/Provider.tsx'
 import React from 'react'
 
 interface DeleteModalProps {

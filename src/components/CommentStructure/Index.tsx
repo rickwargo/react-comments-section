@@ -1,11 +1,11 @@
 import './CommentStructure.scss'
 import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import InputField from '../InputField/Index'
+import { GlobalContext } from '../../context/Provider.tsx'
 import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
-import DeleteModal from './DeleteModal'
+import DeleteModal from './DeleteModal.tsx'
 import React from 'react'
+import InputField from "../InputField/Index.tsx";
 
 interface CommentStructureProps {
   info: {
@@ -157,7 +157,7 @@ const CommentStructure = ({
                 __html: info.text
               }}
             />
-          ) : info.text.substring(0, 19) === "<span data-link-id=" ? (
+          ) : info.text.includes("<span data-link-id=") ? (
               <div
                 className='infoStyle'
                 dangerouslySetInnerHTML={{
